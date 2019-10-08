@@ -1,5 +1,5 @@
 venv * .log * .pot * .idea * .pyclocal_settings.py.
 .gitignore
-.idea
 templates/
 venv/include/
+/.idea/
