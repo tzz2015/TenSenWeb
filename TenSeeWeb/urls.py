@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.handler import user_handler
+from app.handler import user_handler, home_handler, demand_handler
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('updateUser/', user_handler.update_user),
+    path('updateUser', user_handler.update_user),
+    path('banner', home_handler.request_banner),
+    path('feeling', home_handler.request_feeling),
+    path('demands', demand_handler.demand_list),
+    path('add_demand', demand_handler.add_demand),
+    path('add_start', demand_handler.add_start),
 
 ]

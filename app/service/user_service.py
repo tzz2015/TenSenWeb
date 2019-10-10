@@ -9,10 +9,15 @@ def update_user(request):
     realName = request.POST.get('realName')
     avatarUrl = request.POST.get('avatarUrl')
     nickName = request.POST.get('nickName')
+    phone = request.POST.get('phone')
     defaults = {'appId': appId}
     UserModel.objects.update_or_create(appId=appId, avatarUrl=avatarUrl, nickName=nickName,
                                        defaults=defaults)
     if not is_empty(realName):
         UserModel.objects.filter(appId=appId).update(realName=realName)
+
+    if not is_empty(phone):
+        UserModel.objects.filter(appId=appId).update(phone=phone)
+
     user = UserModel.objects.filter(appId=appId).values()
     return result_handler(user[0])
