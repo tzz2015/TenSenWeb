@@ -5,6 +5,7 @@ from TenSeeWeb.json_utils import format_data, result_handler
 from TenSeeWeb import settings
 import os
 
+
 def upload(request):
     """
     上传文件
