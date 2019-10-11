@@ -24,7 +24,7 @@ from django.contrib.staticfiles.urls import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('upload', upload),
-    path(r'media/(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT}),
+    path('media/(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT}),
     path('updateUser', user_handler.update_user),
     path('banner', home_handler.request_banner),
     path('feeling', home_handler.request_feeling),
