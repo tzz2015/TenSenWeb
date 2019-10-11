@@ -12,7 +12,7 @@ def get_banner_list():
 
 # 语录列表
 def get_feeling_list():
-    feelings = FeelingsModel.objects.all().order_by('-id')
+    feelings = FeelingsModel.objects.all().order_by('id')
     return_list = []
     for feeling in feelings:
         item = format_data(feeling)
