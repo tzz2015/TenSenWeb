@@ -7,12 +7,12 @@ logger = logging.getLogger('log')
 
 # banner列表
 def get_banner_list():
-    return result_handler(BannerModel.objects.all())
+    return result_handler(BannerModel.objects.all().order_by('priority'))
 
 
 # 语录列表
 def get_feeling_list():
-    feelings = FeelingsModel.objects.all()
+    feelings = FeelingsModel.objects.all().order_by('-id')
     return_list = []
     for feeling in feelings:
         item = format_data(feeling)

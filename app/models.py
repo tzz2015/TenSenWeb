@@ -17,6 +17,7 @@ class UserModel(models.Model):
 class BannerModel(models.Model):
     imageUrl = models.CharField(max_length=255, null=True, unique=True, help_text='banner图片地址')
     des = models.CharField(max_length=20, null=True, unique=False, help_text='描述')
+    priority = models.IntegerField(default=0, null=False, help_text='优先级')
 
 
 # 感慨语录
@@ -30,3 +31,4 @@ class DemandModel(models.Model):
     form = models.ForeignKey("UserModel", null=False, on_delete=models.CASCADE, help_text='来源')
     demand = models.CharField(max_length=255, null=True, unique=False, help_text='需求')
     start = models.IntegerField(default=0, null=False, help_text='点赞数')
+    createTime = models.DateTimeField(auto_now=True, help_text='时间')

@@ -4,13 +4,12 @@ from app.models import DemandModel, UserModel
 
 # 获取需求列表
 def get_demand_list():
-    demands = DemandModel.objects.all()
-    return_list = []
+    demands = DemandModel.objects.all().order_by('-id').values()
     for demand in demands:
         item = format_data(demand)
-        item['form'] = format_data(demand.form)
-        return_list.append(item)
-    return result_handler(return_list)
+        print(type(item))
+        item['form'] = format_data(UserModel.objects.filter(id=demand['form_id'])[0])
+    return result_handler(demands)
 
 
 # 新增需求
