@@ -7,7 +7,6 @@ def get_demand_list():
     demands = DemandModel.objects.all().order_by('-id').values()
     for demand in demands:
         item = format_data(demand)
-        print(type(item))
         item['form'] = format_data(UserModel.objects.filter(id=demand['form_id'])[0])
     return result_handler(demands)
 

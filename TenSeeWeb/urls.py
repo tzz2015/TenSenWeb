@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.handler import user_handler, home_handler, demand_handler
+from django.views.static import serve
 
+from TenSeeWeb import settings
+from app.handler import user_handler, home_handler, demand_handler
+from app.views import upload
+from django.contrib.staticfiles.urls import static
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('upload', upload),
+    path(r'media/(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT}),
     path('updateUser', user_handler.update_user),
     path('banner', home_handler.request_banner),
     path('feeling', home_handler.request_feeling),
@@ -27,3 +33,5 @@ urlpatterns = [
     path('add_start', demand_handler.add_start),
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
