@@ -23,7 +23,7 @@ SECRET_KEY = 'vpwsm)&f3uq1s*&ooa=tjp4_l*n3_ah!1fv=@ckw)(g2gb-l2s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+SECURE_SSL_REDIRECT = False
 ALLOWED_HOSTS = ['*', ]
 
 # Application definition
