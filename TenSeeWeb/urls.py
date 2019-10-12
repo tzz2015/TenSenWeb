@@ -21,12 +21,15 @@ from TenSeeWeb import settings
 from app.handler import user_handler, home_handler, demand_handler
 from app.views import upload
 from django.contrib.staticfiles.urls import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('upload', upload),
     path('media/(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT}),
     path('updateUser', user_handler.update_user),
     path('userList', user_handler.get_user_list),
+    path('userByOpenId', user_handler.get_user_by_openid),
+
     path('login', user_handler.login),
     path('banner', home_handler.request_banner),
     path('feeling', home_handler.request_feeling),

@@ -17,3 +17,8 @@ def get_user_list(request):
 # 登录
 def login(request):
     return user_service.user_login(request)
+
+
+# 根据openId获取用户信息
+def get_user_by_openid(request):
+    return user_service.get_user_by_openid(request)
