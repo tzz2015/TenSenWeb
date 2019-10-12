@@ -26,6 +26,8 @@ urlpatterns = [
     path('upload', upload),
     path('media/(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT}),
     path('updateUser', user_handler.update_user),
+    path('userList', user_handler.get_user_list),
+    path('login', user_handler.login),
     path('banner', home_handler.request_banner),
     path('feeling', home_handler.request_feeling),
     path('demands', demand_handler.demand_list),

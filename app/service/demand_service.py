@@ -14,8 +14,8 @@ def get_demand_list():
 # 新增需求
 def add_demand(request):
     demand = request.POST.get('demand')
-    appId = request.META.get('HTTP_APPID')
-    user = UserModel.objects.filter(appId=appId)[0]
+    openId = request.META.get('HTTP_OPENID')
+    user = UserModel.objects.filter(openId=openId)[0]
     DemandModel.objects.create(demand=demand, start=0, form_id=user.id)
     return result_handler(None)
 
