@@ -1,5 +1,5 @@
 from TenSeeWeb.json_utils import result_handler, is_empty, format_data
-from app.models import BannerModel, FeelingsModel
+from app.models import BannerModel, FeelingsModel, TabBarSwitchModel
 import logging
 
 logger = logging.getLogger('log')
@@ -35,6 +35,13 @@ def update_banner(request):
     return result_handler(None)
 
 
+# 删除轮播图
+def delete_banner(request):
+    banner_id = int(request.POST.get('id', default=0))
+    BannerModel.objects.filter(id=banner_id).delete()
+    return result_handler(None)
+
+
 # 更新感言
 def update_feeling(request):
     id = int(request.POST.get('id', default=0))
@@ -45,3 +52,21 @@ def update_feeling(request):
     else:
         FeelingsModel.objects.create(word=word, form_id=form_id)
     return result_handler(None)
+
+
+# 删除感言
+def delete_feeling(request):
+    id = int(request.POST.get('id', default=0))
+    FeelingsModel.objects.filter(id=id).delete()
+    return result_handler(None)
+
+
+# 控制底部tabBar显示
+def switch_tab_bar():
+    models = TabBarSwitchModel.objects.all()
+    # 如果未空插入一条数据 默认隐藏
+    if models.__len__() == 0:
+        TabBarSwitchModel.objects.create(switch=0)
+        return result_handler(0)
+    else:
+        return result_handler(models[0].switch)

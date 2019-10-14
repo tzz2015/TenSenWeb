@@ -34,12 +34,15 @@ urlpatterns = [
     path('login', user_handler.login),
     path('banner', home_handler.request_banner),
     path('update_banner', home_handler.update_banner),
+    path('delete_banner', home_handler.delete_banner),
     path('feeling', home_handler.request_feeling),
     path('update_feeling', home_handler.update_feeling),
+    path('delete_feeling', home_handler.delete_feeling),
+    path('switch_tab_bar', home_handler.switch_tab_bar),
     path('demands', demand_handler.demand_list),
     path('add_demand', demand_handler.add_demand),
-    path('add_start', demand_handler.add_start),
     path('delete_demand', demand_handler.delete_demand),
+    path('add_start', demand_handler.add_start),
 
 ]
 

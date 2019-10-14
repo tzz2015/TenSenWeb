@@ -33,3 +33,8 @@ class DemandModel(models.Model):
     demand = models.CharField(max_length=255, null=True, unique=False, help_text='需求')
     start = models.IntegerField(default=0, null=False, help_text='点赞数')
     createTime = models.DateTimeField(auto_now=True, help_text='时间')
+
+
+# 动态控制小程序底部tab显示
+class TabBarSwitchModel(models.Model):
+    switch = models.IntegerField(default=0, null=False, help_text='tabBar类型')
