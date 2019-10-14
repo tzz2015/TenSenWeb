@@ -19,12 +19,13 @@ from django.views.static import serve
 from TenSeeWeb import settings
 from .middleware.ExceptionMiddleware import permission_denied, page_not_found, page_error
 from app.handler import user_handler, home_handler, demand_handler
-from app.views import upload, send_email
+from app.views import upload, send_email,default
 from django.contrib.staticfiles.urls import static
 from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', default),
     path('upload', upload),
     path('send_email', send_email),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}, name='media'),
