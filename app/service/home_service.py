@@ -62,11 +62,14 @@ def delete_feeling(request):
 
 
 # 控制底部tabBar显示
-def switch_tab_bar():
+def switch_tab_bar(request):
     models = TabBarSwitchModel.objects.all()
+    switch = int(request.POST.get('switch', default=-1))
     # 如果未空插入一条数据 默认隐藏
     if models.__len__() == 0:
         TabBarSwitchModel.objects.create(switch=0)
         return result_handler(0)
     else:
+        if switch > 0:
+            TabBarSwitchModel.objects.update(switch=switch)
         return result_handler(models[0].switch)

@@ -10,11 +10,13 @@ def update_user(request):
     avatarUrl = request.POST.get('avatarUrl')
     nickName = request.POST.get('nickName')
     phone = request.POST.get('phone')
+    tag = request.POST.get('tag')
+
     find_user = UserModel.objects.filter(openId=openId)
     if find_user.__len__() > 0:
-        UserModel.objects.filter(openId=openId).update(avatarUrl=avatarUrl, nickName=nickName)
+        UserModel.objects.filter(openId=openId).update(avatarUrl=avatarUrl, nickName=nickName, tag=tag)
     else:
-        UserModel.objects.create(openId=openId, avatarUrl=avatarUrl, nickName=nickName)
+        UserModel.objects.create(openId=openId, avatarUrl=avatarUrl, nickName=nickName, tag=tag)
 
     if not is_empty(realName):
         UserModel.objects.filter(openId=openId).update(realName=realName)
