@@ -140,7 +140,7 @@ EMAIL_TIMEOUT = 3
 # 日志
 
 # log_path是存放日志的路径
-log_path = os.path.join(BASE_DIR, 'logs')
+log_path = os.path.join(BASE_DIR, 'media/logs')
 # 如果不存在这个logs文件夹，就自动创建一个
 if not os.path.exists(log_path):
     os.mkdir(log_path)
@@ -186,7 +186,7 @@ LOGGING = {
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'formatter': 'standard'
+            'formatter': 'standard',
         },
         # 输出info日志
         'info': {
