@@ -14,3 +14,8 @@ def add_demand(request):
 # 点赞
 def add_start(request):
     return demand_service.add_start(request)
+
+
+# 删除需求
+def delete_demand(request):
+    return demand_service.delete_demand(request)

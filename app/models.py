@@ -15,7 +15,7 @@ class UserModel(models.Model):
 
 # 轮播图
 class BannerModel(models.Model):
-    imageUrl = models.CharField(max_length=255, null=True, unique=True, help_text='banner图片地址')
+    imageUrl = models.CharField(max_length=255, null=False, unique=True, help_text='banner图片地址')
     des = models.CharField(max_length=20, null=True, unique=False, help_text='描述')
     priority = models.IntegerField(default=0, null=False, help_text='优先级')
     desColor = models.CharField(max_length=20, null=False, default="#ffffff", unique=False, help_text='描述')

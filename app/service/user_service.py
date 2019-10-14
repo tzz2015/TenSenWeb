@@ -5,14 +5,14 @@ from app.models import UserModel
 
 
 def update_user(request):
+    id = int(request.POST.get('id', default=0))
     openId = request.META.get('HTTP_OPENID')
     realName = request.POST.get('realName')
     avatarUrl = request.POST.get('avatarUrl')
     nickName = request.POST.get('nickName')
     phone = request.POST.get('phone')
-    find_user = UserModel.objects.filter(openId=openId)
-    if find_user.__len__() > 0:
-        UserModel.objects.filter(openId=openId).update(avatarUrl=avatarUrl, nickName=nickName)
+    if id > 0:
+        UserModel.objects.filter(id=id).update(openId=openId, avatarUrl=avatarUrl, nickName=nickName)
     else:
         UserModel.objects.create(openId=openId, avatarUrl=avatarUrl, nickName=nickName)
 

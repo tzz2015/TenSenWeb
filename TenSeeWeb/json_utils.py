@@ -14,7 +14,7 @@ def result_handler(data, msg='ok', code=200):
     data = format_data(data)
     model = BaseModel(data=data, msg=msg, code=code)
     result_json = HttpResponse(json.dumps(model.to_dict(), cls=DateEncoder), content_type="application/json", )
-    logger.info(result_json)
+    print(result_json)
     return result_json
 
 

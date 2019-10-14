@@ -28,3 +28,11 @@ def add_start(request):
         start = demand[0].start + 1
         DemandModel.objects.filter(id=demand_id).update(start=start)
     return result_handler(None)
+
+
+# 删除需求
+def delete_demand(request):
+    demand_id = int(request.POST.get('id'))
+    if demand_id > 0:
+        DemandModel.objects.filter(id=demand_id).delete()
+    return result_handler(None)
