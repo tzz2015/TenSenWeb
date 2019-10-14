@@ -3,3 +3,4 @@ venv * .log * .pot * .idea * .pyclocal_settings.py.
 templates/
 venv/
 /.idea/
+/media/logs/
