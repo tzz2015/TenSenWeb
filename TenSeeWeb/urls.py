@@ -31,6 +31,7 @@ urlpatterns = [
     path('updateUser', user_handler.update_user),
     path('userList', user_handler.get_user_list),
     path('userByOpenId', user_handler.get_user_by_openid),
+    path('delete_user', user_handler.delete_user),
     path('login', user_handler.login),
     path('banner', home_handler.request_banner),
     path('update_banner', home_handler.update_banner),

@@ -42,6 +42,13 @@ def get_user_by_openid(request):
         return error_handler('请先登录')
 
 
+# 删除用户
+def delete_user(request):
+    user_id = int(request.POST.get('id', default=0))
+    UserModel.objects.filter(id=user_id).delete()
+    return error_handler(None)
+
+
 # 微信用户登录
 def user_login(request):
     code = request.POST.get('code')

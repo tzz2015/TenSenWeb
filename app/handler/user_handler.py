@@ -14,6 +14,11 @@ def get_user_list(request):
     return user_service.get_user_list()
 
 
+# 删除用户
+def delete_user(request):
+    return user_service.delete_user(request)
+
+
 # 登录
 def login(request):
     return user_service.user_login(request)
