@@ -14,7 +14,7 @@ log = logging.getLogger('django')
 
 
 def default(request):
-    return result_handler('你来了，我看，你来了就别走了😏')
+    return result_handler('老铁，你来了，我看，你来了就别走了😏')
 
 
 def upload(request):
