@@ -1,14 +1,13 @@
 import smtplib
 from email.header import Header
 from email.mime.text import MIMEText
-
 from django.http import HttpResponse
 from TenSeeWeb.json_utils import format_data, result_handler
-
 from TenSeeWeb import settings
 import os
-
 import logging
+
+from TenSeeWeb.util import md5_str
 
 log = logging.getLogger('django')
 
@@ -24,11 +23,12 @@ def upload(request):
     :return:
     """
     file = request.FILES.get("file")
-    f = open(os.path.join(settings.MEDIA_ROOT, "upload", file.name), "wb")
+    file_name = os.path.splitext(file.name)[0][-30:] + os.path.splitext(file.name)[1]
+    f = open(os.path.join(settings.MEDIA_ROOT, "upload", file_name), "wb")
     for chunk in file.chunks():
         f.write(chunk)
     f.close()
-    return result_handler(os.path.join(settings.MEDIA_URL, "upload", file.name))
+    return result_handler(os.path.join(settings.MEDIA_URL, "upload", file_name))
 
 
 def send_email(request):

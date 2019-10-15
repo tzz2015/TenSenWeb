@@ -70,6 +70,6 @@ def switch_tab_bar(request):
         TabBarSwitchModel.objects.create(switch=0)
         return result_handler(0)
     else:
-        if switch > 0:
+        if switch > -1:
             TabBarSwitchModel.objects.update(switch=switch)
         return result_handler(models[0].switch)

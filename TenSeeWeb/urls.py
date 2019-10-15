@@ -22,11 +22,13 @@ from app.handler import user_handler, home_handler, demand_handler
 from app.views import upload, send_email,default
 from django.contrib.staticfiles.urls import static
 from django.conf.urls import url
+from app.handler.upload_tenxun_handler import upload_wx_file
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', default),
     path('upload', upload),
+    path('upload_wx_file', upload_wx_file),
     path('send_email', send_email),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}, name='media'),
     path('updateUser', user_handler.update_user),
