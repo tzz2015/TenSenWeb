@@ -33,4 +33,4 @@ def delete_feeling(request):
 
 # tabBar开关
 def switch_tab_bar(request):
-    return home_service.switch_tab_bar()
+    return home_service.switch_tab_bar(request)
