@@ -23,7 +23,8 @@ class ExceptionMiddleware(MiddlewareMixin):
 
 def page_not_found(request, exception):
     logger.error('接口不存在：{}'.format(request))
-    send_email_msg(str(request) + '---接口不存在：{}'.format(exception))
+    if 'favicon.ico' not in str(request):
+        send_email_msg(str(request) + '---接口不存在：{}'.format(exception))
     return result_handler(None, msg='接口不存在', code=404)
 
 
